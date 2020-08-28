@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from __future__ import print_function
 import glob
 import os
 import time
@@ -51,8 +50,11 @@ while True:
     file_already_existed = os.path.isfile(filename)
     with open(filename, 'a') as fd:
         # We only want a header on the first line
-        if not file_already_existed:
-            print("Date,C,F")
+        if file_already_existed:
+            print(f"Appending to {filename}.")
+        else:
+            print(f"Starting new file {filename}.")
+            print("Date,C,F", file=fd)
         date = mydate()
         while date == start_date:
             # There is a race condition -- now() can change after we
