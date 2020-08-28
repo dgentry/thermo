@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+"""A simple program to test that we can read from a DS18B20.  Reads
+once per second and prints each reading in degrees C and degrees F."""
+
 import os
 import glob
 import time
@@ -12,11 +15,13 @@ base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
 
+
 def read_temp_raw():
     f = open(device_file, 'r')
     lines = f.readlines()
     f.close()
     return lines
+
 
 def read_temp():
     lines = read_temp_raw()
@@ -30,6 +35,7 @@ def read_temp():
         temp_f = temp_c * 9.0 / 5.0 + 32.0
         return round(temp_c, 1), round(temp_f, 1)
 
+
 while True:
-	print(str(datetime.datetime.now())[0:19], read_temp())
-	time.sleep(1)
+    print(str(datetime.datetime.now())[0:19], read_temp())
+    time.sleep(1)
