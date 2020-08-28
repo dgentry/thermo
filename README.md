@@ -6,8 +6,8 @@ There are two parts:
 
 - Reading and Saving Temperatures: `thermo-daemon.py`
 
-This is done on a Raspberry Pi (although most cheap single-board
-computers running GNU/Linux will work fine) using a cheap digital
+This is running on a Raspberry Pi (and most cheap single-board
+computers running GNU/Linux will work fine too) using a cheap digital
 sensor, a DS18B20.  The temperature is taken and recorded every 10
 minutes, and saved to a daily file.  New daily files are started just
 after midnight.  Simplye leave `thermo-daemon.py` running
