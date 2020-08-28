@@ -58,7 +58,7 @@ while True:
             # There is a race condition -- now() can change after we
             # checked the date.  I don't care.
             c, f = read_temp()
-            print(c,f)
+            print(c, f)
             now = str(datetime.now())[0:19]
             csv = f'{now}, {c}, {f}'
             print(csv)
