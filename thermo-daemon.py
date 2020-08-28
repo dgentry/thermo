@@ -56,9 +56,9 @@ while True:
         date = mydate()
         while date == start_date:
             # There is a race condition -- now() can change after we
-            # checked the date.  I don't care.
+            # checked the date.  I would like a fix that doesn't make
+            # this harder to read.
             c, f = read_temp()
-            print(c, f)
             now = str(datetime.now())[0:19]
             csv = f'{now}, {c}, {f}'
             print(csv)
