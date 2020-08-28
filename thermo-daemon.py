@@ -48,7 +48,11 @@ def mydate():
 while True:
     start_date = mydate()
     filename = os.path.join(save_data_dir, f"thermo-{start_date}.dat")
+    file_already_existed = os.path.isfile(filename)
     with open(filename, 'a') as fd:
+        # We only want a header on the first line
+        if not file_already_existed:
+            print("Date,C,F")
         date = mydate()
         while date == start_date:
             # There is a race condition -- now() can change after we
